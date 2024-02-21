@@ -10,6 +10,7 @@
   border-radius: 12px;
 }
 
-button:hover {
+.button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
