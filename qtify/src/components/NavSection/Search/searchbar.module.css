@@ -1,0 +1,40 @@
+.Searchbar {
+  width: 93%;
+  height: 100%;
+  padding: 5px 10px;
+  font-weight: 400;
+  color: var(--color-black);
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.Searchbar:focus {
+  outline: none;
+}
+
+.SearchbarWrapper {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  max-width: 568px;
+  height: 48px;
+  border: 1px solid var(--color-black);
+  border-radius: 8px;
+}
+
+.input_button {
+  cursor: pointer;
+  width: 7%;
+  height: 100%;
+  border: none;
+  border-left: 1px solid var(--color-black);
+  background-color: var(--color-white);
+  border-radius: 0px 8px 8px 0px;
+}
+
+.input_logo {
+  margin: 0 auto;
+  height: 20px;
+  width: 20px;
+}

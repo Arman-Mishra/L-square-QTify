@@ -1,13 +1,11 @@
 import React from "react";
-import ButtonFeedback from "./components/ButtonFeedback";
-import Searchbar from "./components/Searchbar";
+import Navbar from "./components/NavSection/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <ButtonFeedback />
-      <Searchbar />
-    </div>
+    <>
+      <Navbar />
+    </>
   );
 }
 
