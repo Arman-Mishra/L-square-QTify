@@ -1,1 +1,1 @@
-Hi this is a sample text to check whether the repository is connected to github or not. (:)
+Hi this is a sample text to check whether the repository is connected to github or not.
