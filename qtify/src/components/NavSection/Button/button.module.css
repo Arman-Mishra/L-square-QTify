@@ -2,7 +2,7 @@
   color: var(--color-primary);
   font-weight: 600;
   font-size: 18px;
-  max-height: 48px;
+  height: 48px;
   letter-spacing: 0.25px;
   background-color: var(--color-black);
   padding: 10px 16px;
@@ -10,6 +10,6 @@
   border-radius: 12px;
 }
 
-.button:hover {
+button:hover {
   cursor: pointer;
 }
