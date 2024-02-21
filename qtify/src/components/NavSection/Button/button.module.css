@@ -8,9 +8,9 @@
   padding: 10px 16px;
   border: 1px;
   border-radius: 12px;
+  cursor: pointer;
 }
 
-.button:hover {
+/* .button:hover {
   cursor: pointer;
-  opacity: 0.8;
-}
+} */
