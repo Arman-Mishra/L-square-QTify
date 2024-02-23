@@ -17,6 +17,7 @@
 
 .text {
   color: var(--color-white);
+  padding: 10px;
   font-size: 32px;
   line-height: 48px;
   font-weight: 600;
