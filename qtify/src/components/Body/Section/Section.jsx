@@ -1,49 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./section.module.css";
 import Card from "../Card/Card";
-import axios from "axios";
+import { CircularProgress } from "@mui/material";
+import Carousel from "../Carousel/Carousel";
 
-const Section = ({ btn_text }) => {
-  const [arr, setArr] = useState([]);
+const Section = ({ title, data, type }) => {
+  const [carouselToggle, setCarouselToggle] = useState(true);
 
-  useEffect(() => {
-    fetchCards().then((data) => setArr(data));
-  });
-
-  const fetchCards = async () => {
-    const url = "https://qtify-backend-labs.crio.do/albums/top";
-    try {
-      const resp = await axios.get(url);
-      return resp.data;
-    } catch (e) {
-      console.log(e);
-    }
-  };
   return (
     <>
       <div className={styles.wrapper}>
         <div className={styles.top_bar}>
-          <p className={styles.text_white}>Top Albums</p>
-          <button className={styles.button_green}>{btn_text}</button>
+          <p className={styles.text_white}>{title}</p>
+          <button
+            className={styles.button_green}
+            onClick={() => {
+              setCarouselToggle((prevState) => !prevState);
+            }}
+          >
+            {carouselToggle ? "Show All" : "Collapse"}
+          </button>
         </div>
-        <div className={styles.grid}>
-          {arr.map((item) => {
-            console.log(item);
-            return (
-              <Card
-                key={item.id}
-                data={{
-                  image: item.image,
-                  follows: item.follows,
-                  title: item.title,
-                  slug: item.slug,
-                  songs: item.songs,
-                }}
-                type="album"
-              />
-            );
-          })}
-        </div>
+        {data.length === 0 ? (
+          <CircularProgress />
+        ) : (
+          <div className={styles.cardWrapper}>
+            {!carouselToggle ? (
+              <div className={styles.grid}>
+                {data.map((item) => {
+                  return <Card key={item.id} data={item} type={type} />;
+                })}
+              </div>
+            ) : (
+              <Carousel data={data} />
+            )}
+          </div>
+        )}
       </div>
     </>
   );

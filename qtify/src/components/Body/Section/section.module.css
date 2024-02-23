@@ -1,13 +1,13 @@
 .wrapper {
   margin: 24px;
   display: flex;
-  gap: 24px;
   flex-direction: column;
 }
 
 .top_bar {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .text_white {
@@ -23,6 +23,10 @@
   color: var(--color-primary);
   border: none;
   background-color: var(--color-black);
+}
+
+.cardWrapper {
+  margin-top: 24px;
 }
 
 .grid {

@@ -3,13 +3,14 @@ import styles from "./navbar.module.css";
 import Button from "../Button/Button";
 import Searchbar from "../Search/Searchbar";
 import Logo from "../Logo/Logo";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className={styles.navbar_wrapper}>
-      <a href="/">
+      <Link to="/">
         <Logo />
-      </a>
+      </Link>
       <Searchbar />
       <Button>Give Feedback</Button>
     </nav>

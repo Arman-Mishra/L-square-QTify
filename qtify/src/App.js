@@ -1,27 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/NavSection/Navbar/Navbar";
-import Hero from "./components/HeroSection/Hero";
-// import Card from "./components/Body/Card/Card";
-// import image from "./assets/Rectangle 2139.png";
-import Section from "./components/Body/Section/Section";
+import { Outlet } from "react-router-dom";
+import { fetchTopAlbums, fetchNewAlbums } from "./api/api";
 
 function App() {
+  const [data, setData] = useState({});
+
+  const generateAndStoreData = (key, source) => {
+    source().then((data) =>
+      setData((prevState) => {
+        return { ...prevState, [key]: data };
+      })
+    );
+  };
+
+  useEffect(() => {
+    generateAndStoreData("topAlbums", fetchTopAlbums);
+    generateAndStoreData("newAlbums", fetchNewAlbums);
+  }, []);
+
+  const { topAlbums = [], newAlbums = [] } = data;
+
   return (
     <>
       <Navbar />
-      <Hero />
-      {/* <Card
-        data={{
-          image: image,
-          //follows: "100 follows",
-          //title: "New Hindi Songs",
-          //likes: 100,
-          //slug: "",
-          //songs: ["asd", "asd", "fsdgdf", "asdaslkk"],
-        }}
-        type="song"
-      /> */}
-      <Section btn_text="Collapse" />
+      <Outlet context={{ topAlbums, newAlbums }} />
     </>
   );
 }
