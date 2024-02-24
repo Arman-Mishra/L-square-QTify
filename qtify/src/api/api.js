@@ -22,6 +22,22 @@ export const fetchNewAlbums = async () => {
   }
 };
 
-export const fetchSongs = async () => {};
+export const fetchSongs = async () => {
+  const url = BASE_URL + "songs";
+  try {
+    const resp = await axios.get(url);
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-export const fetchFilters = async () => {};
+export const fetchFilters = async () => {
+  const url = BASE_URL + "genres";
+  try {
+    const resp = await axios.get(url);
+    return resp.data;
+  } catch (e) {
+    console.log(e);
+  }
+};

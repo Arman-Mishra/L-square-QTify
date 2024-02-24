@@ -4,7 +4,7 @@ import Card from "../Card/Card";
 import { CircularProgress } from "@mui/material";
 import Carousel from "../Carousel/Carousel";
 
-const Section = ({ title, data, type }) => {
+const Section = ({ title, data, type, filters }) => {
   const [carouselToggle, setCarouselToggle] = useState(true);
 
   return (
@@ -12,14 +12,18 @@ const Section = ({ title, data, type }) => {
       <div className={styles.wrapper}>
         <div className={styles.top_bar}>
           <p className={styles.text_white}>{title}</p>
-          <button
-            className={styles.button_green}
-            onClick={() => {
-              setCarouselToggle((prevState) => !prevState);
-            }}
-          >
-            {carouselToggle ? "Show All" : "Collapse"}
-          </button>
+          {type === "album" ? (
+            <button
+              className={styles.button_green}
+              onClick={() => {
+                setCarouselToggle((prevState) => !prevState);
+              }}
+            >
+              {carouselToggle ? "Show All" : "Collapse"}
+            </button>
+          ) : (
+            <></>
+          )}
         </div>
         {data.length === 0 ? (
           <CircularProgress />
@@ -32,7 +36,12 @@ const Section = ({ title, data, type }) => {
                 })}
               </div>
             ) : (
-              <Carousel data={data} />
+              <Carousel
+                data={data}
+                renderComponent={(renderData) => (
+                  <Card data={renderData} type={type} />
+                )}
+              />
             )}
           </div>
         )}
