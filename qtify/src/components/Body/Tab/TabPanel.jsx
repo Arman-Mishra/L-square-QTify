@@ -25,6 +25,7 @@ const TabPanel = ({ data, changeGenre }) => {
       <Box>
         <Tabs
           value={value}
+          textColor="#ffffff"
           TabIndicatorProps={{
             style: {
               backgroundColor: "var(--color-primary)",
