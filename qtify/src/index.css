@@ -58,3 +58,7 @@ h6 {
 .swiper-slide {
   width: auto !important;
 }
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  color: var(--color-white) !important;
+}

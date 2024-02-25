@@ -36,7 +36,7 @@ export const fetchFilters = async () => {
   const url = BASE_URL + "genres";
   try {
     const resp = await axios.get(url);
-    return resp.data;
+    return resp.data.data;
   } catch (e) {
     console.log(e);
   }

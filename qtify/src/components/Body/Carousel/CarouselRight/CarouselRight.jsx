@@ -11,7 +11,7 @@ const CarouselRight = () => {
     swiper.on("slideChange", () => {
       setIsEnd(swiper.isEnd);
     });
-  }, []);
+  });
 
   return (
     <div className={styles.RightNavigation}>

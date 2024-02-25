@@ -7,18 +7,10 @@ import {
   fetchSongs,
   fetchFilters,
 } from "./api/api";
+import { StyledEngineProvider } from "@mui/material";
 
 function App() {
   const [data, setData] = useState({});
-
-  const generateAndStoreData = (key, source) => {
-    source().then((data) =>
-      setData((prevState) => {
-        return { ...prevState, [key]: data };
-      })
-    );
-  };
-
   useEffect(() => {
     generateAndStoreData("topAlbums", fetchTopAlbums);
     generateAndStoreData("newAlbums", fetchNewAlbums);
@@ -28,10 +20,20 @@ function App() {
 
   const { topAlbums = [], newAlbums = [], songs = [], filters = [] } = data;
 
+  const generateAndStoreData = (key, source) => {
+    source().then((data) =>
+      setData((prevState) => {
+        return { ...prevState, [key]: data };
+      })
+    );
+  };
+
   return (
     <>
       <Navbar />
-      <Outlet context={{ topAlbums, newAlbums, songs, filters }} />
+      <StyledEngineProvider injectFirst>
+        <Outlet context={{ topAlbums, newAlbums, songs, filters }} />
+      </StyledEngineProvider>
     </>
   );
 }
